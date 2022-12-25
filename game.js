@@ -517,7 +517,7 @@ const floor1alt2Scene = {
 
 const mickScene = {
   title: "You talk to Mick, the cleaner",
-  text: "You talk to Mick and he tells you all about his day and the scum that work downstairs in Sitel.  He tells you that he has been working there for 20 years and he hates it.  He says that he is going to retire in 2 years and he is going to go and live in Spain.  He says that he is going to buy a house with a pool and he is going to spend his days drinking beer and eating tapas.  He says that he is going to get a dog and he is going to call it 'Paco'.  He says that he is going to get a motorbike and he is going to ride it around the mountains.  He says that he is going to get a girlfriend and he is going to take her to the beach.  He says that he is going to get a job as a waiter and he is going to serve people tapas.  He says that he is going to get a job as a taxi driver and he is going to drive people around the mountains.  He says that he is going to get a job as a lifeguard and he is going to save people from drowning.  He says that he is going to get a job as a policeman and he is going to catch people who are speeding.  He says that he is going to get a job as a fireman and he is going to put out fires.  He says that he is going to get a job as a doctor and he is going to save people's lives.  He says that he is going to get a job as a teacher and he is going to teach people how to read and write.  He says that he is going to get a job as a builder and he is going to build houses.  He says that he is going to get a job as a plumber and he is going to fix people's pipes.  He says that he is going to get a job as a gardener and he is going to plant flowers.  He says that he is going to get a job as a postman and he is going to deliver letters.  He says that he is going to get a job as a bus driver and he is going to drive people around.  He says that he is going to get a job as a train driver and he is going to drive people around.  He says that he is going to get a job as a pilot and he is going to fly people around.  He says that he is going to get a job as a chef and he is going to cook people",
+  text: "You talk to Mick and he tells you all about his day and the scum that work downstairs in Sitel.  He tells you that he has been working there for 20 years and he hates it.  He says that he is going to retire in 2 years and he is going to go and live in Spain.  He says that he is going to buy a house with a pool and he is going to spend his days drinking beer and eating tapas.  He says that he is going to get a dog and he is going to call it 'Paco'.  He says that he is going to get a motorbike and he is going to ride it around the mountains.  He says that he is going to get a girlfriend and he is going to take her to the beach.  He says that he is going to get a job as a waiter and he is going to serve people tapas............       ",
   choices: [
     {
       text: "carry on talking to Mick",
@@ -1347,7 +1347,7 @@ function render() {
   const outputElement = document.createElement("div");
   outputElement.id = "output";
   sceneElem.appendChild(outputElement);
-  const delay = 25;
+  const delay = 30;
   let index = 0;
 
   const intervalId = setInterval(printCharacter, delay);
