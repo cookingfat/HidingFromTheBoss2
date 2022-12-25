@@ -1347,7 +1347,7 @@ function render() {
   const outputElement = document.createElement("div");
   outputElement.id = "output";
   sceneElem.appendChild(outputElement);
-  const delay = 2;
+  const delay = 1;
   let index = 0;
 
   const intervalId = setInterval(printCharacter, delay);
