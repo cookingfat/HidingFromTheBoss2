@@ -265,12 +265,20 @@ const breakroomScene = {
 
 const endScene = {
   title: "Escape!!!",
-  text: "That was a close one!  Good job you didn't drink the coffee!  You go through the main door, scan your pass and leave the call centre and have a huge vape. That's the end of Chapter 1, and currently the end of the game.  The game is still in development, so please check back soon for more chapters!",
+  text: `That was a close one!  Good job you didn't drink the coffee!  You go through the main door, scan your pass and leave the call centre and have a huge vape. That's the end of Chapter 1, and currently the end of the game.  The game is still in development, so please check back soon for more chapters!`,
   choices: [
     {
       text: "Play again?",
       nextScene: 'start',
       action: reload,
+      update: "yes"
+    },
+    {
+      text: "Buy me a coffee?",
+      nextScene: 'start',
+      action: () => {
+        window.location.assign('https://www.buymeacoffee.com/peterharpham');
+      },
       update: "yes"
     },
   ]
@@ -680,7 +688,7 @@ const zzzScene = {
   text: "Suddenly, you wake up to the sound of the cinema room door opening and you open your eyes and see Tony stood in the doorway with his arms folded.  He doesn't look happy as he tells you you've been gone for 4 hours!!  You've really gone and done it this time...",
   choices: [
     {
-      text: "Zzzzzzz",
+      text: "Back to your desk",
       nextScene: 'filenote',
       action: addFilenote,
       update: "yes"
@@ -816,7 +824,7 @@ const lendScene = {
 
 const vendingScene = {
   title: "The vending machines",
-  text: "You walk over to the vending machines. There's the coffee machine and the snack machine.  A large coffee sounds good, but so does a bag of flaming hot Doritos. They are £2.50 each, so you can only choose one. What do you do?",
+  text: "You walk over to the vending machines. There's the coffee machine and the snack machine.  A large coffee sounds good, but so does a bag of flaming hot Doritos. They are £2.50 each, What do you do?",
   choices: [
     {
       text: "Buy some crisps",
@@ -858,6 +866,18 @@ const coffeeScene = {
       text: "Go back",
       nextScene: 'canteen',
       action: AddCoffeeItem,
+      update: "yes"
+    },
+  ]
+};
+const nomoneyScene = {
+  title: "You're skint pal...",
+  text: "You reach into your pocket, open your wallet and amidst the crumpled receipts and old tram tickets you find........... nothing.  You're skint.  It's a week to payday.  Your mate owes you £2.50 but you're not sure if you should ask him for it.",
+  choices: [
+    {
+      text: "Go back",
+      nextScene: 'canteen',
+      action: incrementWrapLow,
       update: "yes"
     },
   ]
@@ -1308,6 +1328,7 @@ const scenes = {
   vending: vendingScene,
   crisps: crispsScene,
   coffee: coffeeScene,
+  nomoney : nomoneyScene,
   maindoor: maindoorScene,
   cinema: cinemaScene,
   TakeACall: TakeACallScene,
@@ -1438,7 +1459,7 @@ function render() {
       // check if items have been used and to hide buttons if not. 
       scene.choices = scene.choices.filter(choice => {
         console.log(HasCoffeeItem);
-        return (choice.text !== "IT Issues" || !ITIssuesUsed) && (choice.text !== "Take Money" || !Hasmoney) && (choice.text !== "Keep Chatting" || !Hasmoney) && (choice.text !== "Pay For Coffee" || !HasUsedMoney) && (choice.text !== "Tell him you went to buy him a coffee" || HasCoffeeItem) && (choice.text !== "Reset Wrap" || HasWrap) && (choice.text !== "Remove 1 File Note" || HasFileNotes) && (choice.text !== "Lend your mate £2.50" || !Hasmoney);
+        return (choice.text !== "IT Issues" || !ITIssuesUsed) && (choice.text !== "Take Money" || !Hasmoney) && (choice.text !== "Keep Chatting" || !Hasmoney) && (choice.text !== "Pay For Coffee" || !HasUsedMoney) && (choice.text !== "Tell him you went to buy him a coffee" || HasCoffeeItem) && (choice.text !== "Reset Wrap" || HasWrap) && (choice.text !== "Remove 1 File Note" || HasFileNotes);
       });
 
 
@@ -1604,8 +1625,21 @@ function RemoveMoney() {
     li.remove();
     item.remove();
     HasUsedMoney = true;
-    //  This is adding coffee to the inventory, even if the player has used the money for so
+    // PETE
+    if (Hasmoney) {
+      // Deduct the cost of the snack or coffee from the player's money
+      Hasmoney = false;
+    } else {
+      // Display the nomoney scene if the player doesn't have enough money
+      currentScene = nomoneyScene;
+    }
+    
   }
+}
+// I added this to try and check if the player has the money item in their inventory and return true if they do
+function playerhasMoney() {
+  // return true if the player has the money item in their inventory
+  return Hasmoney;
 }
 
 function AddCoffeeItem() {
@@ -1629,6 +1663,7 @@ function RemoveCoffee() {
     HasCoffeeItem = false;
   }
 }
+
 
 
 
