@@ -299,17 +299,88 @@ const stairsScene = {
 
 const fireexitScene = {
   title: "You're free!",
-  text: "You push the bar on the fire exit door and it opens. As you begin to walk up to the shelter, you remember that the fire doors are alarmed and you will set off the alarm.  What do you do?",
+  text: "You push the bar on the fire exit door and it opens. You're free at last!  Where now?",
   choices: [
     {
-      text: "B",
-      nextScene: "desk2",
-      action: NoAction,
+      text: "Go out of the barriers and leave the premises",
+      nextScene: "barriers",
+      action: incrementWrapMed,
+      update: "yes"
+    },
+    {
+      text: "Walk up to the fag shed",
+      nextScene: "fagshed",
+      action: incrementWrapMed,
+      update: "yes"
+    },
+    {
+      text: "Go towards the car park",
+      nextScene: "carpark",
+      action: incrementWrapMed,
+      update: "yes"
+    },
+    {
+      text: "Hide in a bush",
+      nextScene: "bush",
+      action: incrementWrapHigh,
       update: "yes"
     },
 
   ]
 };
+const barrierScene = {
+  title: "Walking off....",
+  text: "With your head down,  you casually walk round the corner and through the barriers.  You've almost made it out of the building when you hear a familiar voice shout your name.    Steve the security guard was alerted by the fire exit alarm and saw you walk out on the CCTV.  That was a silly thing to do.  Steve tells you to go back to work and will be informing Tony about what you've done.",
+  choices: [
+    {
+      text: "Go back to your desk",
+      nextScene: 'filenote',
+      action: addFilenote,
+      update: "yes"
+
+    }
+  ]
+};
+const fagshedScene = {
+  title: "Up to the fag shed.",
+  text: "You look round and no one seemed to see you come out of the fire exit.  You really need a vape, so you walk up to the fag shelter.  You walk round the corner and Steve the security guard is waiting for you.  He was alerted by the fire exit alarm and saw you walk out on the CCTV.  That was a silly thing to do.  Steve tells you to go back to work and will be informing Tony about what you've done, ",
+  choices: [
+    {
+      text: "Go back to your desk",
+      nextScene: 'filenote',
+      action: addFilenote,
+      update: "yes"
+
+    }
+  ]
+};
+const carparkScene = {
+  title: "Down to the carpark.",
+  text: "You wisely walk down towards the car park as you are much less likely to be seen there.  You turn the corner and are greeted by Steve the security guard.   He was alerted by the fire exit alarm and saw you walk out on the CCTV.  That was a silly thing to do.  Steve tells you to go back to work and will be informing Tony about what you've done, ",
+  choices: [
+    {
+      text: "Go back to your desk",
+      nextScene: 'filenote',
+      action: addFilenote,
+      update: "yes"
+
+    }
+  ]
+};
+const bushScene = {
+  title: "Hiding in a bush",
+  text: "Worried that you might have set off the alarm, you panic and don't know what to do,  so you find the nearest bush and hide in it.  Unfortunatelty, the bush you chose is only 2 feet tall and Steve the security guard easily sees you and wonders what on earth you are doing trying to hide in a very small bush. That was a silly thing to do.  Steve tells you to go back to work and will be informing Tony about what you've done, ",
+  choices: [
+    {
+      text: "Go back to your desk",
+      nextScene: 'filenote',
+      action: addFilenote,
+      update: "yes"
+
+    }
+  ]
+};
+
 
 const liftScene = {
   title: "In the lift",
@@ -517,7 +588,7 @@ const floor1alt2Scene = {
 
 const mickScene = {
   title: "You talk to Mick, the cleaner",
-  text: "You talk to Mick and he tells you all about his day and the scum that work downstairs in Sitel.  He tells you that he has been working there for 20 years and he hates it.  He says that he is going to retire in 2 years and he is going to go and live in Spain.  He says that he is going to buy a house with a pool and he is going to spend his days drinking beer and eating tapas.  He says that he is going to get a dog and he is going to call it 'Paco'.  He says that he is going to get a motorbike and he is going to ride it around the mountains.  He says that he is going to get a girlfriend and he is going to take her to the beach.  He says that he is going to get a job as a waiter and he is going to serve people tapas............       ",
+  text: "You talk to Mick and he tells you all about his day and the scum that work downstairs in Sitel.  He tells you that he has been working there for 20 years and he hates it.  He says that he is going to retire in 2 years and he is going to go and live in Spain.  He says that he is going to buy a house with a pool and he is going to spend his days drinking beer and eating tapas.  He says that he is going to get a dog and he is going to call it 'Paco'.  He says that he is going to get a motorbike and he is going to ride it around the mountains.  He says that he is going to get a girlfriend and he is going to take her to the beach.  He says that he is going to get a job as a waiter and he is going to serve people tapas.  He says that he is going to get a job as a taxi driver and he is going to drive people around the mountains.  He says that he is going to get a job as a lifeguard and he is going to save people from drowning.  He says that he is going to get a job as a policeman and he is going to catch people who are speeding.  He says that he is going to get a job as a fireman and he is going to put out fires.  He says that he is going to get a job as a doctor and he is going to save people's lives.  He says that he is going to get a job as a teacher and he is going to teach people how to read and write.  He says that he is going to get a job as a builder and he is going to build houses.  He says that he is going to get a job as a plumber and he is going to fix people's pipes.  He says that he is going to get a job as a gardener and he is going to plant flowers.  He says that he is going to get a job as a postman and he is going to deliver letters.  He says that he is going to get a job as a bus driver and he is going to drive people around.  He says that he is going to get a job as a train driver and he is going to drive people around.  He says that he is going to get a job as a pilot and he is going to fly people around.  He says that he is going to get a job as a chef and he is going to cook people",
   choices: [
     {
       text: "carry on talking to Mick",
@@ -1212,6 +1283,10 @@ const scenes = {
   breakroom: breakroomScene,
   stairs: stairsScene,
   fireexit: fireexitScene,
+  barriers : barrierScene,
+  carpark : carparkScene,
+  fagshed : fagshedScene,
+  bush : bushScene,
   lift: liftScene,
   alarm: alarmScene,
   waitsteve: waitsteveScene,
@@ -1239,7 +1314,6 @@ const scenes = {
   filenote: filenoteScene,
   zzz: zzzScene,
   ITissueItem: ITIssueItemScene,
-
   moneyitem: MoneyItemScene,
   CMU: CMUS,
   skive: skiveScene,
@@ -1347,7 +1421,7 @@ function render() {
   const outputElement = document.createElement("div");
   outputElement.id = "output";
   sceneElem.appendChild(outputElement);
-  const delay = 30;
+  const delay = 1;
   let index = 0;
 
   const intervalId = setInterval(printCharacter, delay);
@@ -1364,7 +1438,7 @@ function render() {
       // check if items have been used and to hide buttons if not. 
       scene.choices = scene.choices.filter(choice => {
         console.log(HasCoffeeItem);
-        return (choice.text !== "IT Issues" || !ITIssuesUsed) && (choice.text !== "Take Money" || !Hasmoney) && (choice.text !== "Keep Chatting" || !Hasmoney) && (choice.text !== "Pay For Coffee" || !HasUsedMoney) && (choice.text !== "Tell him you went to buy him a coffee" || HasCoffeeItem) && (choice.text !== "Reset Wrap" || HasWrap) && (choice.text !== "Remove 1 File Note" || HasFileNotes);
+        return (choice.text !== "IT Issues" || !ITIssuesUsed) && (choice.text !== "Take Money" || !Hasmoney) && (choice.text !== "Keep Chatting" || !Hasmoney) && (choice.text !== "Pay For Coffee" || !HasUsedMoney) && (choice.text !== "Tell him you went to buy him a coffee" || HasCoffeeItem) && (choice.text !== "Reset Wrap" || HasWrap) && (choice.text !== "Remove 1 File Note" || HasFileNotes) && (choice.text !== "Lend your mate £2.50" || !Hasmoney);
       });
 
 
