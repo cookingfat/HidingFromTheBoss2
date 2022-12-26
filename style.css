@@ -1,3 +1,12 @@
+/* old stuff */
+@media (max-width: 768px) {
+  #file-notes-container,
+  #Wrap-Container {
+    width: 100%;
+    flex-direction: column;
+  }
+}
+
 button {
   display: flex; /* changed from fixed */
   justify-content: center;
@@ -309,3 +318,4 @@ a {
   background-color: rgba(12, 148, 148, 0.808);
 
 }
+
